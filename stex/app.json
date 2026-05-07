@@ -4,9 +4,12 @@
     "slug": "stex-customer-app",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "icon": "./assets/images/icon.png",
+    "splash": {
+      "backgroundColor": "#050810"
+    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.tobbigray.stexcustomerapp"
@@ -14,7 +17,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/icon.png",
-        "backgroundColor": "#0d1117"
+        "backgroundColor": "#050810"
       },
       "package": "com.tobbigray.stexcustomerapp"
     },
@@ -25,7 +28,6 @@
       "expo-router"
     ],
     "extra": {
-      "router": {},
       "eas": {
         "projectId": "b3791597-3e38-421b-bfdb-7f21d4c49794"
       }
