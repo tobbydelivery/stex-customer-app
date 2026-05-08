@@ -31,7 +31,7 @@ const SplashScreen = ({ navigation }) => {
 
     setTimeout(() => {
       Animated.timing(fadeAnim, { toValue: 0, duration: 500, useNativeDriver: true }).start(() => {
-        navigation.replace("Login");
+        navigation.replace("Onboarding");
       });
     }, 3500);
   }, []);

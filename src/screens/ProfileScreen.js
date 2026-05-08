@@ -47,7 +47,7 @@ const ProfileScreen = ({ navigation }) => {
       title: "Support",
       items: [
         { icon: "🔔", label: "Notifications", color: "#f39c12", onPress: () => {} },
-        { icon: "❓", label: "Help & Support", color: "#9b59b6", onPress: () => {} },
+        { icon: "❓", label: "Help & Support", onPress: () => navigation.navigate("Support") },
         { icon: "⭐", label: "Rate Our Service", color: "#f39c12", onPress: () => {} },
         { icon: "📋", label: "Terms & Privacy", color: "#95a5a6", onPress: () => {} },
       ]
