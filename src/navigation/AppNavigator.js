@@ -9,11 +9,14 @@ import BookDeliveryScreen from "../screens/BookDeliveryScreen";
 import HomeScreen from "../screens/HomeScreen";
 import LoginScreen from "../screens/LoginScreen";
 import OnboardingScreen from "../screens/OnboardingScreen";
+import PaymentScreen from "../screens/PaymentScreen";
+import PaymentSuccessScreen from "../screens/PaymentSuccessScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import SplashScreen from "../screens/SplashScreen";
 import SupportScreen from "../screens/SupportScreen";
 import TrackScreen from "../screens/TrackScreen";
+
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -78,6 +81,8 @@ const AppNavigator = () => (
       <Stack.Screen name="Register" component={RegisterScreen} />
       <Stack.Screen name="Main" component={MainTabs} />
       <Stack.Screen name="Support" component={SupportScreen} />
+      <Stack.Screen name="Payment" component={PaymentScreen} />
+      <Stack.Screen name="PaymentSuccess" component={PaymentSuccessScreen} />
     </Stack.Navigator>
   </NavigationContainer>
 );

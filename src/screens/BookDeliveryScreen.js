@@ -64,22 +64,34 @@ const BookDeliveryScreen = ({ navigation }) => {
   };
 
   const bookDelivery = async () => {
-    setLoading(true);
-    try {
-      const res = await API.post("/orders", {
-        sender: { name: form.senderName, phone: form.senderPhone, address: form.senderAddress },
-        recipient: { name: form.recipientName, phone: form.recipientPhone, address: form.recipientAddress },
-        package: { description: form.description, weight: parseFloat(form.weight) || 1, fragile: form.fragile }
-      });
-      Alert.alert("🎉 Order Placed!", `Tracking: ${res.data.order.trackingNumber}\n\nCheck your email for confirmation!`, [
-        { text: "Track Order", onPress: () => navigation.navigate("Track", { trackingNumber: res.data.order.trackingNumber }) },
-        { text: "Done", onPress: () => navigation.navigate("Home") }
-      ]);
-    } catch (err) {
-      Alert.alert("Error", err.response?.data?.error || "Could not place order");
-    } finally {
-      setLoading(false);
-    }
+  setLoading(true);
+  try {
+    const res = await API.post("/orders", {
+      sender: { name: form.senderName, phone: form.senderPhone, address: form.senderAddress },
+      recipient: { name: form.recipientName, phone: form.recipientPhone, address: form.recipientAddress },
+      package: { description: form.description, weight: parseFloat(form.weight) || 1, fragile: form.fragile }
+    });
+    const order = res.data.order;
+    Alert.alert(
+      "🎉 Order Placed!",
+      `Tracking: ${order.trackingNumber}\n\nProceed to payment?`,
+      [
+        {
+          text: "Pay Now",
+          onPress: () => navigation.navigate("Payment", {
+            orderId: order._id,
+            amount: order.price || 2500,
+            trackingNumber: order.trackingNumber
+          })
+        },
+        { text: "Pay Later", onPress: () => navigation.navigate("Home") }
+      ]
+    );
+  } catch (err) {
+    Alert.alert("Error", err.response?.data?.error || "Could not place order");
+  } finally {
+    setLoading(false);
+  }
   };
 
   const InputField = ({ label, value, onChange, placeholder, keyboard, secure }) => (
