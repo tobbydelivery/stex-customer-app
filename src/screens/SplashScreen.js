@@ -1,14 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { useEffect, useRef } from "react";
-import {
-  Animated,
-  Dimensions,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
-
+import { Animated, Dimensions, ImageBackground, StatusBar, StyleSheet, Text, View } from "react-native";
 const { width, height } = Dimensions.get("window");
 
 const SplashScreen = ({ navigation }) => {
@@ -41,7 +33,13 @@ const SplashScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
-      <LinearGradient colors={["#0d1117", "#1a252f", "#2c3e50"]} style={StyleSheet.absoluteFill} />
+      <ImageBackground
+        source={{ uri: "https://i.ibb.co/XkVB3qCd/B13-E95-AC-6-A36-48-B8-8-E92-E7881-B1-FB33-A.png" }}
+        style={StyleSheet.absoluteFill}
+        resizeMode="cover"
+      >
+        <LinearGradient colors={["rgba(0,0,0,0.7)", "rgba(0,0,0,0.5)", "rgba(231,76,60,0.3)"]} style={StyleSheet.absoluteFill} />
+      </ImageBackground>
 
       {/* Animated background circles */}
       <View style={styles.bgCircle1} />

@@ -1,15 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { useRef, useState } from "react";
-import {
-    Animated,
-    Dimensions,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
-} from "react-native";
+import { Animated, Dimensions, ImageBackground, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const { width, height } = Dimensions.get("window");
 
@@ -74,7 +65,13 @@ const OnboardingScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
-      <LinearGradient colors={slide.bg} style={StyleSheet.absoluteFill} />
+      <ImageBackground
+        source={{ uri: "https://i.ibb.co/XkVB3qCd/B13-E95-AC-6-A36-48-B8-8-E92-E7881-B1-FB33-A.png" }}
+        style={StyleSheet.absoluteFill}
+        resizeMode="cover"
+      >
+        <LinearGradient colors={["rgba(0,0,0,0.82)", "rgba(0,0,0,0.75)", "rgba(0,0,0,0.88)"]} style={StyleSheet.absoluteFill} />
+      </ImageBackground>
 
       {/* Decorative orbs */}
       <View style={[styles.orb1, { backgroundColor: slide.color[0] + "15" }]} />
