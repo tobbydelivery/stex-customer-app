@@ -1,5 +1,5 @@
-import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
 
 const API = axios.create({
   baseURL: "https://tobby-delivery-backend.onrender.com/api",
@@ -19,13 +19,17 @@ API.interceptors.response.use(
   async (error) => {
     const config = error.config;
 
-    // Retry up to 3 times on network errors
+    // Retry up to 3 times on network errors or 500s
     if (!config._retryCount) config._retryCount = 0;
 
-    if (config._retryCount < 3 && (!error.response || error.response.status >= 500)) {
+    if (
+      config._retryCount < 3 &&
+      (!error.response || error.response.status >= 500)
+    ) {
       config._retryCount += 1;
-      const delay = config._retryCount * 1000;
-      await new Promise(resolve => setTimeout(resolve, delay));
+      const delay = config._retryCount * 1500;
+      console.log(`🔄 Retrying request... attempt ${config._retryCount}`);
+      await new Promise((resolve) => setTimeout(resolve, delay));
       return API(config);
     }
 

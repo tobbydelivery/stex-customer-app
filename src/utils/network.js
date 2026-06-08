@@ -3,7 +3,7 @@ import { Alert } from "react-native";
 
 export const checkConnection = async () => {
   const state = await NetInfo.fetch();
-  return state.isConnected;
+  return state.isConnected && state.isInternetReachable;
 };
 
 export const withNetworkCheck = async (action) => {
